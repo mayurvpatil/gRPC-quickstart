@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "com.generated.services";
+option java_multiple_files = true;
+
+message GreetRequest {
+    string name = 1;
+}
+
+message GreetResponse {
+    string response = 1;
+}   
+
+service GreetUnary {
+    rpc Greet (GreetRequest) returns (GreetResponse);
+}
+
+service GreetServerStream {
+    rpc Greet (GreetRequest) returns (stream GreetResponse);
+} 
+
+service GreetClientStream {
+    rpc Greet (stream GreetRequest) returns (GreetResponse);
+}   
+
+service GreetBiStream {
+    rpc Greet (stream GreetRequest) returns (stream GreetResponse);
+}
